@@ -51,9 +51,10 @@ def load():
     return obj
 
 
-o=load()
-print("============ 1. 使用字典取值的方式获取值 =============")
-print(o['Schedule']['events'][0]['name'])
+def test1():
+    o=load()
+    print("============ 1. 使用字典取值的方式获取值 =============")
+    print(o['Schedule']['events'][0]['name'])
 
 
 class FrozenJSON:
@@ -86,9 +87,10 @@ class FrozenJSON:
             return obj
         
 
-
-obj=FrozenJSON(o)
-print("============= 2. 使用类属性取值的方式获取值 =============")
-print(obj.Schedule.events[0].name)
-o2 = FrozenJSON({"k1":"v1","class":"v2"})
-print(o2.class_)  ## python关键字作为key时，替换后缀为_
+def test2():
+    o = load()
+    obj=FrozenJSON(o)
+    print("============= 2. 使用类属性取值的方式获取值 =============")
+    print(obj.Schedule.events[0].name)
+    o2 = FrozenJSON({"k1":"v1","class":"v2"})
+    print(o2.class_)  ## python关键字作为key时，替换后缀为_
